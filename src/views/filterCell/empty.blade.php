@@ -1,0 +1,1 @@
+<td {!! $column->getFilterCellAttributes() !!}></td>
