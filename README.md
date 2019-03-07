@@ -21,7 +21,7 @@ Everything but paginate.
 
 This plugin will not perform filter or search logic for you.
 
-So, as an example (do not actually use this), if you grid was called `user`:
+So, as an example (do not actually use this), if your grid was called `user`:
 
 ```php
 $users = User::query()
