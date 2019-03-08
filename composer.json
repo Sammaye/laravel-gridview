@@ -1,6 +1,7 @@
 {
   "name": "sammaye/laravel-gridview",
   "description": "Quickly prototype the most used component in web applications: grid views",
+  "keywords": ["laravel"],
   "license": "MIT",
   "authors": [
     {
