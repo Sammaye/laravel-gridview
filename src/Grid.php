@@ -2,6 +2,7 @@
 
 namespace sammaye\Grid;
 
+use Closure;
 use Illuminate\Http\Request;
 
 class Grid
@@ -339,7 +340,7 @@ class Grid
 
     protected function getFormattedAttributes($attributes, ...$params)
     {
-        if ($attributes instanceof \Closure) {
+        if ($attributes instanceof Closure) {
             array_unshift($params, $this);
             $attributes = call_user_func_array($attributes, $params);
         }
@@ -353,7 +354,7 @@ class Grid
 
     protected function getPropertyValue($value, ...$params)
     {
-        if ($value instanceof \Closure) {
+        if ($value instanceof Closure) {
             array_unshift($params, $this);
             $value = call_user_func_array($value, $params);
         }

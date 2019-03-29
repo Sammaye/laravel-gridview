@@ -2,6 +2,7 @@
 
 namespace sammaye\Grid;
 
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -246,7 +247,7 @@ class Column
     {
         $this->dataContent = $dataContent;
 
-        if ($escape === null && $dataContent instanceof \Closure) {
+        if ($escape === null && $dataContent instanceof Closure) {
             $escape = false;
         } elseif ($escape === null) {
             $escape = true;
@@ -285,7 +286,7 @@ class Column
     {
         $this->footerContent = $footerContent;
 
-        if ($escape === null && $footerContent instanceof \Closure) {
+        if ($escape === null && $footerContent instanceof Closure) {
             $escape = false;
         } elseif ($escape === null) {
             $escape = true;
@@ -626,7 +627,7 @@ class Column
 
     protected function getFormattedAttributes($attributes, ...$params)
     {
-        if ($attributes instanceof \Closure) {
+        if ($attributes instanceof Closure) {
             array_unshift($params, $this);
             $attributes = call_user_func_array($attributes, $params);
         }
@@ -640,7 +641,7 @@ class Column
 
     protected function getPropertyValue($value, ...$params)
     {
-        if ($value instanceof \Closure) {
+        if ($value instanceof Closure) {
             array_unshift($params, $this);
             $value = call_user_func_array($value, $params);
         }

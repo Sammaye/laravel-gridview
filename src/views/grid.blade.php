@@ -8,7 +8,7 @@
             </tr>
         @endif
         @if($grid->getShowFilterRow() && $grid->hasFilterRow())
-            <tr {!! $grid->getFilterRowAttributes() !!}>
+            <tr {!! $grid->getFilterRowAttributes() !!} data-action="{!! $grid->getFilterFormActionUrl() !!}">
                 <form method="GET" action="{!! $grid->getFilterFormActionUrl() !!}">
                     <input type="hidden"
                            name="{{ $grid->getName() . '-' . $grid->getPageName() }}"
