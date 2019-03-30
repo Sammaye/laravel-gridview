@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class Column
 {
+
     protected $name;
 
     protected $grid;
@@ -202,6 +203,7 @@ class Column
     public function setSortable($sortable)
     {
         $this->sortable = $sortable;
+        return $this;
     }
 
     public function getSortName()
@@ -537,8 +539,8 @@ class Column
         $emptyHeaderCellView = $this->getPropertyValue($this->emptyHeaderCell);
         return view($emptyHeaderCellView)
             ->with([
-                    'column' => $this,
-                ] + $this->getHeaderCellWith());
+                'column' => $this,
+            ] + $this->getHeaderCellWith());
     }
 
     public function setEmptyHeaderCell($emptyHeaderCell)
@@ -655,9 +657,10 @@ class Column
         foreach ($inputValues as $name => $value) {
             if (
                 (
-                    !in_array($name, $this->getWithInput(), true) &&
-                    !preg_match("#^{$this->getElementPrefix()}-#", $name)
-                ) || is_null($value)
+                    !in_array($name, $this->getWithInput(), true)
+                    && !preg_match("#^{$this->getElementPrefix()}-#", $name)
+                )
+                || is_null($value)
             ) {
                 unset($inputValues[$name]);
             }
