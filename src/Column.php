@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 
 class Column
 {
-
     protected $name;
 
     protected $grid;
@@ -232,7 +231,7 @@ class Column
     {
         $dataContent = $this->getPropertyValue($this->dataContent, $row);
 
-        if (!$dataContent) {
+        if (!$dataContent && $dataContent !== 0) {
             if (is_object($row)) {
                 $dataContent = $row->{$this->name} ?? null;
             } elseif (is_array($row)) {
@@ -657,10 +656,9 @@ class Column
         foreach ($inputValues as $name => $value) {
             if (
                 (
-                    !in_array($name, $this->getWithInput(), true)
-                    && !preg_match("#^{$this->getElementPrefix()}-#", $name)
-                )
-                || is_null($value)
+                    !in_array($name, $this->getWithInput(), true) &&
+                    !preg_match("#^{$this->getElementPrefix()}-#", $name)
+                ) || is_null($value)
             ) {
                 unset($inputValues[$name]);
             }
